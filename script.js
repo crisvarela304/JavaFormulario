@@ -24,11 +24,9 @@ document.getElementById("studentform").addEventListener("submit",function(e){
 const tablebody=document.querySelector("#studentTable tbody");
 function addStudentToTable(student){
     const row=document.createElement("tr");
-    row.innerHTML=`
-    <td>${student.name}</td>
-        <td>${student.LastName}</td>
-            <td>${student.grade}</td>
-    `;
+    row.innerHTML=` <td>${student.name}</td>
+        <td>${student.lastName}</td>
+            <td>${student.grade}</td>`;
 tablebody.appendChild(row)
 
 }
