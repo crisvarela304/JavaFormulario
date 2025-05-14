@@ -30,3 +30,17 @@ function addStudentToTable(student){
 tablebody.appendChild(row)
 
 }
+
+const promedios= document.getElementById("average")
+
+function calcularPromedio(){
+    if(students.length===0){
+        promedios.textContent="Promedio General del Curso : N/A"
+        return
+
+
+    }
+    const total=students.reduce((sum,student)=>sum+student.grade,0);
+    const prom=total/students.length;
+    promedios.textContent="Promedio General del Curso: "+prom.toFixed(2);  
+}
