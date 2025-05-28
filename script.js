@@ -75,6 +75,7 @@ function addStudentToTable(student) {
         <td>${student.name}</td>
         <td>${student.lastName}</td>
         <td>${student.grade.toFixed(1)}</td>
+        <td><button class="delete">Eliminar</button></td>
     `;
   tablebody.appendChild(row);
 }
@@ -88,3 +89,20 @@ function calcularPromedio() {
   const prom = total / students.length;
   promedios.textContent = "Promedio General del Curso: " + prom.toFixed(1);
 }
+
+function deleteEstudiante(student,row){
+  // buscar el estudiante en el array
+  const index=student.indexOf(student);
+  if(index > -1){
+    students.splice(index,1);
+    row.remove();
+    calcularPromedio();
+  }
+}
+
+row.querySelector(".delete").addEventListener("click",function(){
+  deleteEstudiante(student,row);
+
+});
+
+//agregar  otro boton que se llame modificar y que permita guardar y tambien agregar un boton eliminar
