@@ -105,4 +105,18 @@ row.querySelector(".delete").addEventListener("click",function(){
 
 });
 
-//agregar  otro boton que se llame modificar y que permita guardar y tambien agregar un boton eliminar
+  const total = students.reduce((sum, s) => sum + s.grade, 0);
+  const promedio = total / students.length;
+
+  const totalEst = students.length;
+  const aprobadosCount = students.filter(s => s.grade >= 4.0).length;
+  const reprobadosCount = totalEst - aprobadosCount;
+  const porcAprobados = ((aprobadosCount / totalEst) * 100).toFixed(2);
+  const porcReprobados = ((reprobadosCount / totalEst) * 100).toFixed(2);
+
+  promedios.innerHTML = `
+    Promedio General del Curso: ${promedio.toFixed(2)}<br>
+    Total de Estudiantes: ${totalEst}<br>
+    Aprobados (≥ 4.0): ${porcAprobados}%<br>
+    Reprobados (< 4.0): ${porcReprobados}%
+  `;
