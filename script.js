@@ -80,7 +80,6 @@ function addStudentToTable(student) {
   `;
   tablebody.appendChild(row);
 
-  // Botón "Eliminar"
   row.querySelector(".delete-btn").addEventListener("click", () => {
     // Encontrar índice del estudiante en el arreglo
     const idx = students.findIndex(s =>
@@ -94,8 +93,6 @@ function addStudentToTable(student) {
       calcularPromedio();
     }
   });
-
-  // Botón "Editar"
   row.querySelector(".edit-btn").addEventListener("click", () => {
     // Cargar los datos en el formulario
     inputs.name.value = student.name;
