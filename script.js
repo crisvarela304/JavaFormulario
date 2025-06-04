@@ -81,7 +81,6 @@ function addStudentToTable(student) {
   tablebody.appendChild(row);
 
   row.querySelector(".delete-btn").addEventListener("click", () => {
-    // Encontrar índice del estudiante en el arreglo
     const idx = students.findIndex(s =>
       s.name === student.name &&
       s.lastName === student.lastName &&
@@ -94,12 +93,10 @@ function addStudentToTable(student) {
     }
   });
   row.querySelector(".edit-btn").addEventListener("click", () => {
-    // Cargar los datos en el formulario
     inputs.name.value = student.name;
     inputs.lastName.value = student.lastName;
     inputs.grade.value = student.grade.toFixed(1);
 
-    // Remover temporalmente ese registro (se agregará de nuevo al enviar)
     const idx = students.findIndex(s =>
       s.name === student.name &&
       s.lastName === student.lastName &&
@@ -120,8 +117,8 @@ function calcularPromedio() {
     promedios.innerHTML = `
       Promedio General del Curso: N/A<br>
       Total de Estudiantes: 0<br>
-      Aprobados ≥ 4.0: 0%<br>
-      Reprobados < 4.0: 0%
+      Deben Realizar Examen (nota < 5.0): 0<br>
+      Eximidos (nota > 5.0): 0
     `;
     return;
   }
@@ -130,15 +127,13 @@ function calcularPromedio() {
   const promedio = total / students.length;
 
   const totalEst = students.length;
-  const aprobadosCount = students.filter(s => s.grade >= 4.0).length;
-  const reprobadosCount = totalEst - aprobadosCount;
-  const porcAprobados = ((aprobadosCount / totalEst) * 100).toFixed(0);
-  const porcReprobados = ((reprobadosCount / totalEst) * 100).toFixed(0);
+  const debenExamen = students.filter(s => s.grade < 5.0).length;
+  const eximidos = students.filter(s => s.grade > 5.0).length;
 
   promedios.innerHTML = `
     Promedio General del Curso: ${promedio.toFixed(1)}<br>
     Total de Estudiantes: ${totalEst}<br>
-    Aprobados ≥ 4.0: ${porcAprobados}%<br>
-    Reprobados < 4.0: ${porcReprobados}%
+    Deben Realizar Examen (nota < 5.0): ${debenExamen}<br>
+    Eximidos (nota > 5.0): ${eximidos}
   `;
 }
