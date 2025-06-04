@@ -128,7 +128,7 @@ function calcularPromedio() {
 
   const totalEst = students.length;
   const debenExamen = students.filter(s => s.grade < 5.0).length;
-  const eximidos = students.filter(s => s.grade > 5.0).length;
+  const eximidos = students.filter(s => s.grade >= 5.0).length;
 
   promedios.innerHTML = `
     Promedio General del Curso: ${promedio.toFixed(1)}<br>
