@@ -120,8 +120,8 @@ function calcularPromedio() {
     promedios.innerHTML = `
       Promedio General del Curso: N/A<br>
       Total de Estudiantes: 0<br>
-      Aprobados (≥ 4.0): 0%<br>
-      Reprobados (< 4.0): 0%
+      Aprobados ≥ 4.0: 0%<br>
+      Reprobados < 4.0: 0%
     `;
     return;
   }
@@ -132,13 +132,13 @@ function calcularPromedio() {
   const totalEst = students.length;
   const aprobadosCount = students.filter(s => s.grade >= 4.0).length;
   const reprobadosCount = totalEst - aprobadosCount;
-  const porcAprobados = ((aprobadosCount / totalEst) * 100).toFixed(2);
-  const porcReprobados = ((reprobadosCount / totalEst) * 100).toFixed(2);
+  const porcAprobados = ((aprobadosCount / totalEst) * 100).toFixed(0);
+  const porcReprobados = ((reprobadosCount / totalEst) * 100).toFixed(0);
 
   promedios.innerHTML = `
-    Promedio General del Curso: ${promedio.toFixed(2)}<br>
+    Promedio General del Curso: ${promedio.toFixed(1)}<br>
     Total de Estudiantes: ${totalEst}<br>
-    Aprobados (≥ 4.0): ${porcAprobados}%<br>
-    Reprobados (< 4.0): ${porcReprobados}%
+    Aprobados ≥ 4.0: ${porcAprobados}%<br>
+    Reprobados < 4.0: ${porcReprobados}%
   `;
 }
